@@ -1,4 +1,17 @@
 #include "processor.h"
+#include "linux_parser.h"
+#include <vector>
 
-// TODO: Return the aggregate CPU utilization
-float Processor::Utilization() { return 0.0; }
+// DONE: Return the aggregate CPU utilization
+float Processor::Utilization() { 
+    float totalCPUjiffies = 0;
+
+    std::vector<std::string> CpuJiffiesVector = LinuxParser::CpuUtilization();
+
+    for (std::string jiffy: CpuJiffiesVector){
+    
+        totalCPUjiffies += std::stof(jiffy);
+    }
+    
+    return (100*LinuxParser::TotalProcesses()/ totalCPUjiffies);
+    }
