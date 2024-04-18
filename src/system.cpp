@@ -26,7 +26,7 @@ std::vector<Process>& System::Processes() {
     for (int pid : pids){
         Process proc2(pid);
         processes_.push_back(proc2);
-
+    }
     return processes_;
 
     // alternate way of writing this function:
@@ -34,7 +34,7 @@ std::vector<Process>& System::Processes() {
     // for(int _pid: pids){
     //    processes_.emplace_back(_pid);}
     // return processes_; 
-    }
+    
 }
 
 // DONE: Return the system's kernel identifier (string)
